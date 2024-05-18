@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Ticket Tracker Application</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<style>
+		.table {
+			border: 2px black solid;
+			padding: 3%;
+
+		}
+
+		
+		.header{
+			background-color: royalblue;
+		}
+
+		
+	</style>
+</head>
+
+<body>
+	<div class="header">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: royalblue;">
+		<a class="navbar-brand" href="#" >TicketTrackerApplication</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+			aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<a class="nav-item nav-link active" th:href="@{/tickets}">Ticket </a>
+				<a class="nav-item nav-link" th:href="@{/addTicket}">Add new Ticket</a>
+
+			</div>
+		</div>
+	</nav>
+	</div>
+	<div>
+
+
+		<h1>List of Tickets</h1>
+			<nav class="navbar navbar-light bg-light">
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"   >
+<button type="button" class="btn btn-primary">Search</button>
+  </form>
+</nav>
+
+		<table class="table table-stripped" style="text-align: center;">
+			<thead class="thead-dark">
+				<tr>
+					<th>#</th>
+					<th>Ticket Title</th>
+					<th>Ticket Description</th>
+					<th>CreatedOn</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="var,varStat :${ticket}">
+					<td th:text="${varStat.count}"></td>
+					<td th:text="${var.title}"></td>
+					<td th:text="${var.description}"></td>
+					<td th:text="${var.CreatedOn}"></td>
+					<td>
+						<a th:href="@{/edit/{id} (id=${var.id})}" class="btn btn-primary">Edit</a>
+						<a th:href="@{/delete/{id} (id=${var.id})}" class="btn btn-danger">Delete</a>
+						<a th:href="@{/view/{id} (id=${var.id})}" class="btn btn-info">View</a>
+
+					</td>
+
+				</tr>
+			</tbody>
+
+		</table>
+
+	</div>
+</body>
+
+</html>

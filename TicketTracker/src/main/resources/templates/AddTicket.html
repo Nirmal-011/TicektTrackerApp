@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>TicketTrackerApplication</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+</head>
+<body>
+		<div class="header">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: royalblue;">
+		<a class="navbar-brand" href="#" >TicketTrackerApplication</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+			aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<a class="nav-item nav-link active" th:href="@{/tickets}">Ticket </a>
+				<a class="nav-item nav-link" th:href="@{/addTicket}">Add new Ticket</a>
+
+			</div>
+		</div>
+	</nav>
+	</div>
+	<h1 class= "text-center"> Create New Ticket</h1>
+   <div class = "card-body">
+	<form th:action="@{/saveTicket}" method="post" th:objet="${ticket}">
+		
+		<label>Ticket Title</label>
+		<input type="text"
+			   name="title"
+			   field="*{title}"
+			   class = "form-control"
+               placeholder= "Enter Ticket Title"/><br>
+         
+        <label>Ticket Description</label>
+		<input type="text"
+			   name="description"
+			   field="*{description}"
+			   class = "form-control"
+               placeholder= "Enter Ticket Description"/><br>
+         
+         <label>Content</label>
+         <textarea textarea id="content" name="content" rows="4" cols="50" class = "form-control" field="*{content}"></textarea><br>
+		
+		<button type="submit" class="btn btn-primary" >submit</button>
+	</form>
+	
+			
+	</div>
+
+</body>
+</html>
